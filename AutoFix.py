@@ -5,7 +5,11 @@ path = os.getcwd()
 host_path = r'C:\Windows\System32\drivers\etc\hosts'
 log_path = os.path.join(path, 'AutoRunLog.log')
 
-res = requests.get('https://gitee.com/if-the-wind/github-hosts/raw/main/hosts')
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+}
+
+res = requests.get('https://gitee.com/if-the-wind/github-hosts/raw/main/hosts'， headers=headers)
 
 for line in res.text.split('\n'):
     if 'github' in line and line[0] != '#':
