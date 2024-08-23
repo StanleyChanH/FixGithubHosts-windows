@@ -1,3 +1,3 @@
 @echo off
-echo Running AutoFix.py with administrative privileges...
-powershell -Command "Start-Process python.exe -ArgumentList '%~dp0AutoFix.py' -Verb RunAs"
+start /B python "%~dp0your_script.py"
+exit
