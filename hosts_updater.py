@@ -5,6 +5,7 @@ import time
 import logging
 import shutil
 import tempfile
+import subprocess
 
 def setup_logging(log_filename):
     # 设置日志配置
@@ -113,9 +114,13 @@ def main():
         
         except Exception as e:
             logging.error(f"An error occurred: {e}")
+        command = ["ipconfig", "/flushdns"]
+        result = subprocess.run(command, capture_output=True, text=True)
+        logging.info(f"Flushed DNS cache: {result.stdout}")
 
         # 暂停一小时 (3600 秒)
         time.sleep(3600)
 
 if __name__ == "__main__":
     main()
+
