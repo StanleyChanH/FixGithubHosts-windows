@@ -117,7 +117,7 @@ def main():
         command = ["ipconfig", "/flushdns"]
         result = subprocess.run(command, capture_output=True, text=True)
         logging.info(f"Flushed DNS cache: {result.stdout}")
-
+        print(f"等待中...1小时后（{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time() + 3600))}）自动再次刷新")
         # 暂停一小时 (3600 秒)
         time.sleep(3600)
 
